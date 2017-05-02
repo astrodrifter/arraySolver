@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="arraySolver" Database="" Version="10.0.0">
-  <Project Name="original" Path="original/original.project" Active="Yes"/>
-  <Project Name="withFunctions" Path="withFunctions/withFunctions.project"/>
+  <Project Name="original" Path="original/original.project" Active="No"/>
+  <Project Name="withFunctions" Path="withFunctions/withFunctions.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>

@@ -8,7 +8,7 @@ void sumRows(int a[100][100], int size);
 void sumCols(int a[100][100], int size);
 void getRowTotals(int rowTotals[], int size);
 void getColTotals(int colTotals[], int size);
-int solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int size);
+void solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int size);
 
 int main(int argc, char **argv)
 {
@@ -236,76 +236,80 @@ void sumCols(int a[100][100], int size)
 	printf("\n");
 }
 
-int solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int size)
+void solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int size)
 {
-    int countEmpty = 0, solved = 0;
-    for(int i = 0; i< size; i++)
+    /* loop*/
+    int solved = 0;
+    while(solved != 1)
     {
-        for(int j = 0; j < size; j++)
+        int countEmpty = 0;
+        for(int i = 0; i< size; i++)
         {
-            if(myArray[i][j] == -1)
-            {
-                countEmpty++;
-            }
-        }
-    }
-    if(countEmpty == 0)
-    {
-        solved = 1;
-    }
-    //check if row has one empty and solve - working
-    int sumRow, countRow;
-    for(int i = 0; i < size; i++) // for each row
-    {
-        sumRow = 0, countRow = 0;
-        for(int j = 0; j < size; j++) // for each column
-        {
-            sumRow += myArray[i][j];
-            if(myArray[i][j] == -1)
-            {
-                countRow++;
-            }
-        }
-        sumRow++; // to account for the -1
-        if(countRow == 1)
-        {
-            int difRow = rowsTotals[i] - sumRow;
             for(int j = 0; j < size; j++)
             {
                 if(myArray[i][j] == -1)
                 {
-                    myArray[i][j] = difRow;
+                    countEmpty++;
                 }
             }
         }
-        
-    }
-    
-    //check if row has one empty and solve - working
-    int sumCol, countCol;
-    for(int i = 0; i < size; i++) // for each row
-    {
-        sumCol = 0, countCol = 0;
-        for(int j = 0; j < size; j++) // for each column
+        if(countEmpty == 0)
         {
-            sumCol += myArray[j][i];
-            if(myArray[j][i] == -1)
+            solved = 1;
+        }
+        //check if row has one empty and solve - working
+        int sumRow, countRow;
+        for(int i = 0; i < size; i++) // for each row
+        {
+            sumRow = 0, countRow = 0;
+            for(int j = 0; j < size; j++) // for each column
             {
-                countCol++;
+                sumRow += myArray[i][j];
+                if(myArray[i][j] == -1)
+                {
+                    countRow++;
+                }
+            }
+            sumRow++; // to account for the -1
+            if(countRow == 1)
+            {
+                int difRow = rowsTotals[i] - sumRow;
+                for(int j = 0; j < size; j++)
+                {
+                    if(myArray[i][j] == -1)
+                    {
+                        myArray[i][j] = difRow;
+                    }
+                }
             }
         }
-        sumCol++; // to account for the -1
-        if(countCol == 1)
+    
+        //check if row has one empty and solve - working
+        int sumCol, countCol;
+        for(int i = 0; i < size; i++) // for each row
         {
-            int difCol = colsTotals[i] - sumCol;
-            for(int j = 0; j < size; j++)
+            sumCol = 0, countCol = 0;
+            for(int j = 0; j < size; j++) // for each column
             {
+                sumCol += myArray[j][i];
                 if(myArray[j][i] == -1)
                 {
-                    myArray[j][i] = difCol;
+                    countCol++;
+                }
+            }
+            sumCol++; // to account for the -1
+            if(countCol == 1)
+            {
+                int difCol = colsTotals[i] - sumCol;
+                for(int j = 0; j < size; j++)
+                {
+                    if(myArray[j][i] == -1)
+                    {
+                        myArray[j][i] = difCol;
+                    }
                 }
             }
         }
+        //return solved;
     }
-    return solved;
 }
