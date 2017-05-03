@@ -69,6 +69,12 @@ Test data 5.
     3 -1 -1 1 8
     15 15 29 22 23
     15 14 17 22 36
+     
+ 
+      * This solution is working but currently cannot solve a puzzle with
+      * more than one empty space left after algorithm has riun through.
+      * I now need to build onto my algorithm a solution for that.
+      * 
 */
 
 #include <stdio.h>
@@ -188,7 +194,19 @@ void getColTotals(int a[], int size)
 /* solve array */
 void solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int size)
 {
-    /* loop */
+    /* array solver algorithm
+     * 
+     *      while not solved
+     *         check rows
+     *         if row has one empty space 
+     *            solve
+     *         check column
+     *         if column has one epty space 
+     *            solve
+     * 
+     * Note: if more than one empty space left array willl not be solved.
+     * 
+     * */
     int solved = 0;
     while(solved != 1)
     {
