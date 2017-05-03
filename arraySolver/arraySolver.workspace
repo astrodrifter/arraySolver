@@ -5,7 +5,8 @@
   <Project Name="withFunctions1" Path="withFunctions1/withFunctions1.project" Active="No"/>
   <Project Name="middleOut" Path="middleOut/middleOut.project" Active="No"/>
   <Project Name="startFresh" Path="startFresh/startFresh.project" Active="No"/>
-  <Project Name="sumesh" Path="chegg/chegg.project" Active="Yes"/>
+  <Project Name="sumesh" Path="chegg/chegg.project" Active="No"/>
+  <Project Name="sumesh2" Path="sumesh2/sumesh2.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -15,6 +16,7 @@
       <Project Name="middleOut" ConfigName="Debug"/>
       <Project Name="startFresh" ConfigName="Debug"/>
       <Project Name="sumesh" ConfigName="Debug"/>
+      <Project Name="sumesh2" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -24,6 +26,7 @@
       <Project Name="middleOut" ConfigName="Release"/>
       <Project Name="startFresh" ConfigName="Release"/>
       <Project Name="sumesh" ConfigName="Release"/>
+      <Project Name="sumesh2" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
