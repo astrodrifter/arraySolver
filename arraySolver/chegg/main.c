@@ -8,7 +8,7 @@
  * 
  * Write a puzzle solver program that will solve these types of 
  * puzzles. Your program will need to read grid data from a provided 
- * file and solve the puzzle based on the file’s input data.
+ * file and solve the puzzle based on the fileâ€™s input data.
  * 
  * My solution algorithm is as follows:
  * 
@@ -24,7 +24,7 @@
  * 
  * 
  * 
-Test data 1:
+Test data 1: (segmentaion fault)
    5
    -1 7 -1 5 -1
    7 -1 5 -1 2
@@ -60,7 +60,7 @@ Test data 4.  (cannot solve yet with my one empty space algorithm)
     7 10 14 19
     10 12 18 10
  
-Test data 5.
+Test data 5. (segmentaion fault)
     5
     -1 -1 0 -1 7
     0 4 5 -1 4
@@ -134,7 +134,7 @@ void fillArray(int a[100][100], int size)
 }
 
 /* prints array */
-void printArray(int a[100][100], int rowTotals[], int colTotals[], int size)
+void printData(int a[100][100], int rowTotals[], int colTotals[], int size)
 {
 	/* print puzzle array */
 	printf("\nYou array is:\n");
@@ -166,7 +166,7 @@ void printArray(int a[100][100], int rowTotals[], int colTotals[], int size)
 }
 
 /* get row totals */
-void getRowTotals(a[], int size)
+void getRowTotals(int a[], int size)
 {
     printf("Enter %i row totals\n",size);
 	int i;
@@ -175,9 +175,8 @@ void getRowTotals(a[], int size)
 		scanf("%i",&a[i]);
 	}
 }
-
 /* get column totals */
-void getColTotals(a[], int size)
+void getColTotals(int a[], int size)
 {
     printf("Enter %i column totals\n", size);
 	int i;
@@ -186,7 +185,6 @@ void getColTotals(a[], int size)
 		scanf("%i",&a[i]);
 	}
 }
-
 /* solve array */
 void solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int size)
 {
