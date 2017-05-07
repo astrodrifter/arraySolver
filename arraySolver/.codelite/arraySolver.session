@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/arraySolver.workspace">
-  <int Value="1" Name="m_selectedTab"/>
+  <int Value="7" Name="m_selectedTab"/>
   <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/arraySolver.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
@@ -12,8 +12,50 @@
     </TabInfo>
     <TabInfo>
       <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/sumesh2/main.c" Name="FileName"/>
-      <int Value="62" Name="FirstVisibleLine"/>
-      <int Value="64" Name="CurrentLine"/>
+      <int Value="285" Name="FirstVisibleLine"/>
+      <int Value="303" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/readingGridData/main.c" Name="FileName"/>
+      <int Value="303" Name="FirstVisibleLine"/>
+      <int Value="303" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/readingTextFile/main.c" Name="FileName"/>
+      <int Value="1" Name="FirstVisibleLine"/>
+      <int Value="17" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/fileWrite/main.c" Name="FileName"/>
+      <int Value="7" Name="FirstVisibleLine"/>
+      <int Value="23" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/fileRead/main.c" Name="FileName"/>
+      <int Value="3" Name="FirstVisibleLine"/>
+      <int Value="10" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/puzzleSolveWithReadFile/main.c" Name="FileName"/>
+      <int Value="93" Name="FirstVisibleLine"/>
+      <int Value="85" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/fillArrayFopen/main.c" Name="FileName"/>
+      <int Value="51" Name="FirstVisibleLine"/>
+      <int Value="57" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

@@ -1,13 +1,9 @@
 #include <stdio.h>
- 
-#define ARRAY_SIZE 10
-extern int array;
 
-int fillArray()
+int getSize()
 {
-    array[ARRAY_SIZE][ARRAY_SIZE];
     FILE * pointer;
-    int i, j, x, y, count;
+    int  count;
      
     pointer = fopen("../testTest.txt", "r");
      
@@ -18,6 +14,17 @@ int fillArray()
     }
      
     fscanf(pointer, "%i", &count);
+    return count;
+}
+
+void fillArray(int array[100][100])
+{
+    FILE * pointer;
+    int i, j, x, y, count;
+     
+    pointer = fopen("../testTest.txt", "r");
+     
+    fscanf(pointer, "%i", &count);
      
     for(i = 0; i < count; i++)
     {
@@ -26,61 +33,28 @@ int fillArray()
             fscanf(pointer, "%i",&array[i][j]);
         }
         
-    }
-    for(x = 0; x < count; x++)
-    {
-        for(y = 0; y < count; y++)
-        {
-            printf("%i",array[x][y]);
-        }
         
     }
      
     fclose(pointer);
-    return count;
 }
 
 int main()
 {
-    /*int x, y, count;
-    count = fillArray();*/
-    fillArray();
-    /*for(x = 0; x < count; x++)
+    int x, y, size = 0;
+    size = getSize();
+    int myArray[size][size];
+    fillArray(myArray);
+    
+    printf("size = %i\n",size);
+    for(x = 0; x < size; x++)
     {
-        for(y = 0; y < count; y++)
+        for(y = 0; y < size; y++)
         {
-            printf("%i",array[x][y]);
+            printf("%i ",myArray[x][y]);
         }
+        printf("\n");
         
-    }*/
+    }
 }
 
-/*
-#include <stdio.h>
- 
-#define ARRAY_SIZE 20
- 
- 
-int main()
-{
-    FILE * pointer;
-    int test1[ARRAY_SIZE], test2[ARRAY_SIZE];
-    int c, count;
-     
-    pointer = fopen("input.txt", "r");
-     
-    if(pointer == NULL)
-    {
-        printf("Open operation failed.");
-        return 1;
-    }
-     
-    fscanf(pointer, "%d", &count);
-     
-    for(c = 0; c < count; c++)
-    {
-        fscanf(pointer, "%d%d", &test1[c], &test2[c]);
-    }
-     
-    fclose(pointer); 
-}*/
