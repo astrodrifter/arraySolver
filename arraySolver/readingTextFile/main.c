@@ -1,23 +1,35 @@
 #include <stdio.h>
+
 //Declare the global variables
 FILE *gridFile = NULL; 		//The file that will be opened
 
-void readFile() {
+void readFile(int data[100][100]) {
+    /* get data and fill an array */
+    //int gridSize, debug = 1;
+    int i = 0;
 	//Open the file and test it worked.	
-	gridFile = fopen("C:\\Assignment\\grid_11.txt", "r");	
-	if (gridFile == NULL)
-	{
-		printf("Cannot open file.\n");
-	} else {
-		printf("Opening file\n");
-		//Read the first line as that will set the size of the grid.
-		fscanf(gridFile,"%i",&gridMAX);
-	}
-	if (debug) {printf("%i\n",gridMAX);}  		//Only for debuging to ensure that gridMAX contactins a value
+	data = fopen("../test1.txt", "r");	
+    
+    while(!feof(data))
+    {
+        if (data == NULL)
+            printf("Cannot open file.\n");
+        else
+            fgets(data[i], 10);
+        i++;
+    }
 }
 
 int main(int argc, char **argv)
 {
-	readFile();
+	int gridFile[10][10];
+    readFile(gridFile);
+    
+    for (int i = 0; i < 200; i++)
+    {
+        printf("Size = %i\n",gridFile[i]);
+    }
+    
+    
 	return 0;
 }

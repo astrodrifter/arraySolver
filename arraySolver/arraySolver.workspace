@@ -10,7 +10,9 @@
   <Project Name="readingGridData" Path="readingGridData/readingGridData.project" Active="No"/>
   <Project Name="readingTextFile" Path="readingTextFile/readingTextFile.project" Active="No"/>
   <Project Name="fileWrite" Path="fileWrite/fileWrite.project" Active="No"/>
-  <Project Name="fileRead" Path="fileRead/fileRead.project" Active="Yes"/>
+  <Project Name="fileRead" Path="fileRead/fileRead.project" Active="No"/>
+  <Project Name="puzzleSolveWithReadFile" Path="puzzleSolveWithReadFile/puzzleSolveWithReadFile.project" Active="No"/>
+  <Project Name="fillArrayFopen" Path="fillArrayFopen/fillArrayFopen.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -25,6 +27,8 @@
       <Project Name="readingTextFile" ConfigName="Debug"/>
       <Project Name="fileWrite" ConfigName="Debug"/>
       <Project Name="fileRead" ConfigName="Debug"/>
+      <Project Name="puzzleSolveWithReadFile" ConfigName="Debug"/>
+      <Project Name="fillArrayFopen" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -39,6 +43,8 @@
       <Project Name="readingTextFile" ConfigName="Release"/>
       <Project Name="fileWrite" ConfigName="Release"/>
       <Project Name="fileRead" ConfigName="Release"/>
+      <Project Name="puzzleSolveWithReadFile" ConfigName="Release"/>
+      <Project Name="fillArrayFopen" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
