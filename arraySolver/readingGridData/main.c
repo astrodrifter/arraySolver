@@ -143,7 +143,7 @@ void fillArray(int a[100][100], int size)
 void printData(int a[100][100], int rowTotals[], int colTotals[], int size)
 {
 	/* print puzzle array */
-	printf("\nYour unsolved grid was:\n");
+	printf("\nYou array is:\n");
 	int i, j;
 	for (i=0; i<size; i++)
 	{
@@ -290,7 +290,7 @@ void solveArray(int myArray[100][100], int rowsTotals[], int colsTotals[], int s
 /* print solved array */
 void printArray(int a[100][100], int size)
 {
-    printf("\nYour solved grid:\n");
+    printf("\nSolved array:\n");
     for(int i = 0; i < size; i++)
     {
         for(int j = 0; j < size; j++)

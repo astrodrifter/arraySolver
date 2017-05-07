@@ -6,7 +6,11 @@
   <Project Name="middleOut" Path="middleOut/middleOut.project" Active="No"/>
   <Project Name="startFresh" Path="startFresh/startFresh.project" Active="No"/>
   <Project Name="sumesh" Path="chegg/chegg.project" Active="No"/>
-  <Project Name="sumesh2" Path="sumesh2/sumesh2.project" Active="Yes"/>
+  <Project Name="sumesh2" Path="sumesh2/sumesh2.project" Active="No"/>
+  <Project Name="readingGridData" Path="readingGridData/readingGridData.project" Active="No"/>
+  <Project Name="readingTextFile" Path="readingTextFile/readingTextFile.project" Active="No"/>
+  <Project Name="fileWrite" Path="fileWrite/fileWrite.project" Active="No"/>
+  <Project Name="fileRead" Path="fileRead/fileRead.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -17,6 +21,10 @@
       <Project Name="startFresh" ConfigName="Debug"/>
       <Project Name="sumesh" ConfigName="Debug"/>
       <Project Name="sumesh2" ConfigName="Debug"/>
+      <Project Name="readingGridData" ConfigName="Debug"/>
+      <Project Name="readingTextFile" ConfigName="Debug"/>
+      <Project Name="fileWrite" ConfigName="Debug"/>
+      <Project Name="fileRead" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -27,6 +35,10 @@
       <Project Name="startFresh" ConfigName="Release"/>
       <Project Name="sumesh" ConfigName="Release"/>
       <Project Name="sumesh2" ConfigName="Release"/>
+      <Project Name="readingGridData" ConfigName="Release"/>
+      <Project Name="readingTextFile" ConfigName="Release"/>
+      <Project Name="fileWrite" ConfigName="Release"/>
+      <Project Name="fileRead" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

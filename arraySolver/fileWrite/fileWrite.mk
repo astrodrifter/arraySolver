@@ -3,10 +3,10 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=sumesh2
+ProjectName            :=fileWrite
 ConfigurationName      :=Debug
 WorkspacePath          :=/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver
-ProjectPath            :=/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/sumesh2
+ProjectPath            :=/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/fileWrite
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="sumesh2.txt"
+ObjectsFileList        :="fileWrite.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/sumesh2/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/dovetales/Desktop/Griffith/1806ICT_Prog_Fund/arraySolver/arraySolver/fileWrite/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
 
