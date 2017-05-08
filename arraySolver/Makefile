@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ fillArrayFopen - Debug ]----------"
-	@cd "fillArrayFopen" && "$(MAKE)" -f  "fillArrayFopen.mk"
+	@echo "----------Building project:[ fillArrayChegg - Debug ]----------"
+	@cd "fillArrayChegg" && "$(MAKE)" -f  "fillArrayChegg.mk"
 clean:
-	@echo "----------Cleaning project:[ fillArrayFopen - Debug ]----------"
-	@cd "fillArrayFopen" && "$(MAKE)" -f  "fillArrayFopen.mk" clean
+	@echo "----------Cleaning project:[ fillArrayChegg - Debug ]----------"
+	@cd "fillArrayChegg" && "$(MAKE)" -f  "fillArrayChegg.mk" clean
