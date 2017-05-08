@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ fillArrayChegg - Debug ]----------"
-	@cd "fillArrayChegg" && "$(MAKE)" -f  "fillArrayChegg.mk"
+	@echo "----------Building project:[ theGreatJoin - Debug ]----------"
+	@cd "theGreatJoin" && "$(MAKE)" -f  "theGreatJoin.mk"
 clean:
-	@echo "----------Cleaning project:[ fillArrayChegg - Debug ]----------"
-	@cd "fillArrayChegg" && "$(MAKE)" -f  "fillArrayChegg.mk" clean
+	@echo "----------Cleaning project:[ theGreatJoin - Debug ]----------"
+	@cd "theGreatJoin" && "$(MAKE)" -f  "theGreatJoin.mk" clean

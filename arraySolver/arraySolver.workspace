@@ -13,7 +13,8 @@
   <Project Name="fileRead" Path="fileRead/fileRead.project" Active="No"/>
   <Project Name="puzzleSolveWithReadFile" Path="puzzleSolveWithReadFile/puzzleSolveWithReadFile.project" Active="No"/>
   <Project Name="fillArrayFopen" Path="fillArrayFopen/fillArrayFopen.project" Active="No"/>
-  <Project Name="fillArrayChegg" Path="fillArrayChegg/fillArrayChegg.project" Active="Yes"/>
+  <Project Name="fillArrayChegg" Path="fillArrayChegg/fillArrayChegg.project" Active="No"/>
+  <Project Name="theGreatJoin" Path="theGreatJoin/theGreatJoin.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -31,6 +32,7 @@
       <Project Name="puzzleSolveWithReadFile" ConfigName="Debug"/>
       <Project Name="fillArrayFopen" ConfigName="Debug"/>
       <Project Name="fillArrayChegg" ConfigName="Debug"/>
+      <Project Name="theGreatJoin" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -48,6 +50,7 @@
       <Project Name="puzzleSolveWithReadFile" ConfigName="Release"/>
       <Project Name="fillArrayFopen" ConfigName="Release"/>
       <Project Name="fillArrayChegg" ConfigName="Release"/>
+      <Project Name="theGreatJoin" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

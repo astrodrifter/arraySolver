@@ -58,28 +58,21 @@ int main()
 
     size = getSize();
 
-    // creating memory for array
+    /* creating memory for array, row totals and column totals */
     int **myArray = (int **)malloc(size*sizeof(int *));
-
     for(i=0; i<size; i++)
     {
         myArray[i] = (int *)malloc(size*sizeof(int));
     }
-    
-    // creating memory for row totals
     int *rowTotal = (int *)malloc(size*sizeof(int));
-
     rowTotal = (int *)malloc(size*sizeof(int));
-    
-    // creating memory for column totals
     int *colTotal = (int *)malloc(size*sizeof(int));
-
     colTotal = (int *)malloc(size*sizeof(int));
     
-
+    /* fill arrays */
     fillArray(myArray, rowTotal, colTotal, size);
   
-    /* print array */
+    /* print arrays */
     printf("\n Array size is %i x %i\n\n",size,size);
     printf("Unsolved array\n");
     for(x = 0; x < size; x++)
@@ -90,15 +83,12 @@ int main()
         }
         printf("\n");
     }
-
-    /* print row totals and column totals */
     printf("\nRow totals\n");
     for(int i = 0; i < size; i ++)
     {
         printf("%i ", rowTotal[i]);
     }
     printf("\n\n");
-    
     printf("Column totals\n");
     for(int i = 0; i < size; i ++)
     {
@@ -106,8 +96,8 @@ int main()
     }
     printf("\n\n");
     
+    
     // deleting memory
-
     for(i=0; i<size; i++)
     {
         free(myArray[i]);
