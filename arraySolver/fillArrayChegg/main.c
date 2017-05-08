@@ -19,7 +19,7 @@ int getSize()
     return count;
 }
 
-void fillArray(int **array, int count)
+void fillArray(int **array, int *rowTotal, int *colTotal, int count)
 {
     FILE * pointer;
     int i, j, x;
@@ -29,15 +29,26 @@ void fillArray(int **array, int count)
     // skipping size value
     fscanf(pointer, "%d", &x);
   
-    for(i = 0; i < count; i++)
+    for(i = 0; i < count + 2; i++)
     {
-        for(j = 0; j < count; j++)
+        if( i == count)
         {
-            fscanf(pointer, "%d",&array[i][j]);
+            for(j = 0; j < count; j++)
+            {
+                fscanf(pointer, "%d",&rowTotal[j]);
+            }
+        } else if (i == count + 1) {
+            for(j = 0; j < count; j++)
+            {
+                fscanf(pointer, "%d",&colTotal[j]);
+            }
+        } else {
+            for(j = 0; j < count; j++)
+            {
+                fscanf(pointer, "%d",&array[i][j]);
+            }
         }
-  
     }
-
     fclose(pointer);
 }
 
@@ -54,10 +65,23 @@ int main()
     {
         myArray[i] = (int *)malloc(size*sizeof(int));
     }
+    
+    // creating memory for row totals
+    int *rowTotal = (int *)malloc(size*sizeof(int));
 
-    fillArray(myArray, size);
+    rowTotal = (int *)malloc(size*sizeof(int));
+    
+    // creating memory for column totals
+    int *colTotal = (int *)malloc(size*sizeof(int));
+
+    colTotal = (int *)malloc(size*sizeof(int));
+    
+
+    fillArray(myArray, rowTotal, colTotal, size);
   
-    printf("size = %i\n",size);
+    /* print array */
+    printf("\n Array size is %i x %i\n\n",size,size);
+    printf("Unsolved array\n");
     for(x = 0; x < size; x++)
     {
         for(y = 0; y < size; y++)
@@ -67,6 +91,21 @@ int main()
         printf("\n");
     }
 
+    /* print row totals and column totals */
+    printf("\nRow totals\n");
+    for(int i = 0; i < size; i ++)
+    {
+        printf("%i ", rowTotal[i]);
+    }
+    printf("\n\n");
+    
+    printf("Column totals\n");
+    for(int i = 0; i < size; i ++)
+    {
+        printf("%i ", colTotal[i]);
+    }
+    printf("\n\n");
+    
     // deleting memory
 
     for(i=0; i<size; i++)
@@ -75,6 +114,8 @@ int main()
     }
 
     free(myArray);
+    free(rowTotal);
+    free(colTotal);
 }
 
 
