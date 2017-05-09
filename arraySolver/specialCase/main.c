@@ -97,7 +97,7 @@ int getSize()
     FILE * pointer;
     int count;
 
-    pointer = fopen("../test11.txt", "r");
+    pointer = fopen("../test16.txt", "r");
 
     if(pointer == NULL)
     {
@@ -116,7 +116,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test11.txt", "r");
+    pointer = fopen("../test16.txt", "r");
 
     // skipping size value
     fscanf(pointer, "%d", &x);
@@ -244,13 +244,14 @@ int solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
         count++;
         if(count == 20)
         {
-            printf("It has been %i loops and still not solved\n",count);
+            //printf("It has been %i loops and still not solved\n",count);
+            printf("puzzle not solved in amature function\n");
             solved = 2;
             return solved;
         }
         
     }
-    printf("it took %i loops to solve\n\n", count);
+    //printf("it took %i loops to solve\n\n", count);
     return solved;
 }
 
@@ -258,6 +259,31 @@ int solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
 int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
 {
     printf("\nYou have reached specialCase() function.\n\n");
-    printf("Awesome algorithm coming here soon.\n\n");
+    printf("Prepare to experiance my awesome algorithm.\n\n");
+    /* find -1's
+     * guess
+     */
+    int i, j, x, solved = 0;
+    /* rows */
+    while(solved != 1)
+    {
+        for(i = 0; i < size; i ++)
+        {
+            for(j = 0; j < size; j++)
+            {
+                if(myArray[i][j] == -1)
+                    for(x = 0; x < 10; x++)
+                    {
+                        myArray[i][j] = x;
+                        solved = solveArray(myArray, rowTotal, colTotal, size);
+                    }
+            }
+        }
+    }
+    if(solved == 1)
+    {
+        printf("Array solved in special case function.\n\n");
+        return solved;
+    } 
     return 1;
 }
