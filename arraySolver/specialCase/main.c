@@ -4,7 +4,8 @@
 /*PROTOTYPES */
 int getSize();
 void fillArray(int **array, int *rowTotal, int *colTotal, int count);
-void solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
+int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
+int specialCase(int **myArray, int *rowTotal, int *colTotal, int size);
 
 int main()
 {
@@ -50,8 +51,24 @@ int main()
     }
     printf("\n\n");
     
-    /* solve array */
-    solveArray(myArray, rowTotal, colTotal, size);
+    /* solve array 
+     * while not solved
+     *      solved = solveArray
+     *      if solved = 1 array is solved
+     *      else if solved = 2 special case algorithm
+     * 
+     * */
+    int solved = 0;
+    while(solved != 1)
+    {
+        solved = solveArray(myArray, rowTotal, colTotal, size);
+        if(solved == 2)
+        {
+            solved = specialCase(myArray, rowTotal, colTotal, size);
+        }
+    }
+    
+    /* print solution */
     printf("Solved array\n");
     for(int x = 0; x < size; x++)
     {
@@ -80,7 +97,7 @@ int getSize()
     FILE * pointer;
     int count;
 
-    pointer = fopen("../test14.txt", "r");
+    pointer = fopen("../test11.txt", "r");
 
     if(pointer == NULL)
     {
@@ -99,7 +116,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test14.txt", "r");
+    pointer = fopen("../test11.txt", "r");
 
     // skipping size value
     fscanf(pointer, "%d", &x);
@@ -127,10 +144,8 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     fclose(pointer);
 }
 
-/* solve array */
-void solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
-{
-    /* array solver algorithm
+/* solve array returns 1 is solved or 2 if not solvable with this algorithm 
+     * array solver algorithm
      * 
      *      while not solved
      *         check rows
@@ -140,10 +155,12 @@ void solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
      *         if column has one epty space 
      *            solve
      * 
-     * Note: if more than one empty space left array willl not be solved.
+     * Note: if more than one empty space left array will not be solved by this algorithm.
      * 
-     * */
-    int solved = 0;
+*/
+int solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
+{
+    int solved = 0, count = 0;
     while(solved != 1)
     {
         /* check if not solved */
@@ -220,5 +237,27 @@ void solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
                 }
             }
         }
+        if(solved == 1)
+        {
+            return solved;
+        }
+        count++;
+        if(count == 20)
+        {
+            printf("It has been %i loops and still not solved\n",count);
+            solved = 2;
+            return solved;
+        }
+        
     }
+    printf("it took %i loops to solve\n\n", count);
+    return solved;
+}
+
+/* special case algorithm */
+int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
+{
+    printf("\nYou have reached specialCase() function.\n\n");
+    printf("Awesome algorithm coming here soon.\n\n");
+    return 1;
 }
