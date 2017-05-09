@@ -4,12 +4,15 @@
 /*PROTOTYPES */
 int getSize();
 void fillArray(int **array, int *rowTotal, int *colTotal, int count);
+void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size);
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
 int specialCase(int **myArray, int *rowTotal, int *colTotal, int size);
+void printSolvedArray(int **array, int size);
 
+/* main starts here */
 int main()
 {
-    int x, y, size = 0, i;
+    int i, size = 0;
 
     size = getSize();
 
@@ -28,64 +31,34 @@ int main()
     fillArray(myArray, rowTotal, colTotal, size);
   
     /* print arrays */
-    printf("\nArray size is %i x %i\n\n",size,size);
-    printf("Unsolved array\n");
-    for(x = 0; x < size; x++)
-    {
-        for(y = 0; y < size; y++)
-        {
-            printf("%i ",myArray[x][y]);
-        }
-        printf("\n");
-    }
-    printf("\nRow totals\n");
-    for(int i = 0; i < size; i ++)
-    {
-        printf("%i ", rowTotal[i]);
-    }
-    printf("\n\n");
-    printf("Column totals\n");
-    for(int i = 0; i < size; i ++)
-    {
-        printf("%i ", colTotal[i]);
-    }
-    printf("\n\n");
+    printUnsolvedArray(myArray, rowTotal, colTotal, size);
     
-    /* solve array 
-     * while not solved
+    /* solve array */
+    /* first algorithm starts here */
+    /* while not solved
      *      solved = solveArray
      *      if solved = 1 array is solved
      *      else if solved = 2 special case algorithm
-     * 
-     * */
+    */
     int solved = 0;
     while(solved != 1)
     {
         solved = solveArray(myArray, rowTotal, colTotal, size);
         if(solved == 2)
         {
+            /* special case algorithm here */
             solved = specialCase(myArray, rowTotal, colTotal, size);
         }
     }
     
     /* print solution */
-    printf("Solved array\n");
-    for(int x = 0; x < size; x++)
-    {
-        for(y = 0; y < size; y++)
-        {
-            printf("%i ",myArray[x][y]);
-        }
-        printf("\n");
-    }
-    printf("\n");
+    printSolvedArray(myArray, size);
     
     // deleting memory
     for(i=0; i<size; i++)
     {
         free(myArray[i]);
     }
-
     free(myArray);
     free(rowTotal);
     free(colTotal);
@@ -97,7 +70,7 @@ int getSize()
     FILE * pointer;
     int count;
 
-    pointer = fopen("../test16.txt", "r");
+    pointer = fopen("../test11.txt", "r");
 
     if(pointer == NULL)
     {
@@ -116,7 +89,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test16.txt", "r");
+    pointer = fopen("../test11.txt", "r");
 
     // skipping size value
     fscanf(pointer, "%d", &x);
@@ -142,6 +115,34 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
         }
     }
     fclose(pointer);
+}
+
+/* print unsloved array data */
+void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size)
+{
+    int i, x, y;
+    printf("\nArray size is %i x %i\n\n",size,size);
+    printf("Unsolved array\n");
+    for(x = 0; x < size; x++)
+    {
+        for(y = 0; y < size; y++)
+        {
+            printf("%i ",array[x][y]);
+        }
+        printf("\n");
+    }
+    printf("\nRow totals\n");
+    for(i = 0; i < size; i ++)
+    {
+        printf("%i ", rowTotal[i]);
+    }
+    printf("\n\n");
+    printf("Column totals\n");
+    for(int i = 0; i < size; i ++)
+    {
+        printf("%i ", colTotal[i]);
+    }
+    printf("\n\n");
 }
 
 /* solve array returns 1 is solved or 2 if not solvable with this algorithm 
@@ -244,8 +245,10 @@ int solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
         count++;
         if(count == 20)
         {
-            //printf("It has been %i loops and still not solved\n",count);
-            printf("puzzle not solved in amature function\n");
+            printf("It has been %i loops and still not solved\n\n",count);
+            printf("puzzle not solved in amature function\n\n");
+            printf("Array progress\n");
+            printSolvedArray(myArray, size);
             solved = 2;
             return solved;
         }
@@ -286,4 +289,20 @@ int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
         return solved;
     } 
     return 1;
+}
+
+/* print solved array */
+void printSolvedArray(int **array, int size)
+{
+    int x, y;
+    printf("Solved array\n");
+    for(x = 0; x < size; x++)
+    {
+        for(y = 0; y < size; y++)
+        {
+            printf("%i ",array[x][y]);
+        }
+        printf("\n");
+    }
+    printf("\n");
 }
