@@ -9,7 +9,7 @@ void createCopy(int **myArray, int **copyArray, int size);
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size);
 int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals retunrs 1 if true
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
-int specialCase(int **myArray, **copyArray, int *rowTotal, int *colTotal, int size);
+int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size);
 void printSolvedArray(int **array, int size);
 
 /* main starts here */
@@ -128,7 +128,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     fclose(pointer);
 }
 
-/* creat copy array */
+/* create copy array */
 void createCopy(int **myArray, int **copyArray, int size)
 {
     /* create array copy */
@@ -195,6 +195,39 @@ int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size)
      * check equals total
      */
      
+     /* check row totals */
+     int i, j, sumRow = 0;
+     for(i = 0; i < size; i++)
+     {
+         sumRow = 0;
+         for(j = 0; j < size; j++)
+         {
+             sumRow += copyArray[i][j];
+         }
+         if(sumRow != rowTotal[i])
+         {
+             printf("Row %i total of %i doesnt equal rowTotal[%i] of %i\n\n",i,sumRow,i,rowTotal[i]);
+             return 0;
+         }
+            
+     }
+     /* check column totals */
+     int k, l, sumCol = 0;
+     for(k = 0; k < size; k++)
+     {
+         sumCol = 0;
+         for(l = 0; l < size; l++)
+         {
+             sumCol += copyArray[l][k];
+         }
+         if(sumCol != colTotal[k])
+         {
+             printf("Column %i total of %i doesnt equal colTotal[%i] of %i\n\n",i,sumCol,i,colTotal[i]);
+             return 0;
+         }
+            
+     }
+     return 1;
 }
 
 /* solve array returns 1 is solved or 2 if not solvable with this algorithm 
