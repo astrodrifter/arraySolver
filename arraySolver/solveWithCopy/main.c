@@ -4,9 +4,10 @@
 /*PROTOTYPES */
 int getSize();
 void fillArray(int **array, int *rowTotal, int *colTotal, int count);
-void createCopy(int **myArray, int **copyArray, size);
+void createCopy(int **myArray, int **copyArray, int size);
 //void fillCopy(int **copyArray, int size);
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size);
+int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals retunrs 1 if true
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
 int specialCase(int **myArray, **copyArray, int *rowTotal, int *colTotal, int size);
 void printSolvedArray(int **array, int size);
@@ -128,7 +129,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
 }
 
 /* creat copy array */
-void createCopy(int **myArray, int **copyArray, size)
+void createCopy(int **myArray, int **copyArray, int size)
 {
     /* create array copy */
     printf("you have netered the create copy function\n\n");
@@ -183,6 +184,17 @@ void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size)
         printf("%i ", colTotal[i]);
     }
     printf("\n\n");
+}
+
+/* solve array copy to check if guess is correct */
+int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size)
+{
+    /* sum each row
+     * check equals total
+     * sum each colum
+     * check equals total
+     */
+     
 }
 
 /* solve array returns 1 is solved or 2 if not solvable with this algorithm 
@@ -312,9 +324,9 @@ int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, in
      * keep going until its solves.
      */
      
-    int i, j, x, solved = 0, check1 = 0;
+    int i, j, x, solved = 0, check1 = 0, check2 = 0;
     /* rows */
-    while(solved != 1 && check1 != 1)
+    while(solved != 1 && check1 != 1 && check2 != 1)
     {
         printf("You made it into while loop\n\n");
         for(i = 0; i < size; i ++)
@@ -331,11 +343,13 @@ int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, in
                         printf("You have entered the for x loop\n\n");
                         createCopy(myArray, copyArray, size); // create a copy array to check slution
                         printf("Copy array check:\n");
-                        printSolvedArray(copyArray,size); // check copy
+                        printSolvedArray(copyArray,size); // check copy arrived
                         copyArray[i][j] = x;   // put a guess in copyArray
                         check1 = solveArray(copyArray, rowTotal, colTotal, size); //check if copyArray is solved
+                        check2 = checkTotals(copyArray, rowTotal, colTotal, size); // check totals
+                        //check1 = solveArray(copyArray, rowTotal, colTotal, size); //check if copyArray is solved
                         // now check if totals are true
-                        if(check1  == 1)
+                        if(check1  == 1 && check2 == 1)
                         {
                             myArray[i][j] = x;
                             solved = solveArray(myArray, rowTotal, colTotal, size);
