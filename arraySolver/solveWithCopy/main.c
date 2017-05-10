@@ -5,7 +5,7 @@
 int getSize();
 void fillArray(int **array, int *rowTotal, int *colTotal, int count);
 void createCopy(int **myArray, int **copyArray, size);
-void fillCopy(int **copyArray, int size);
+//void fillCopy(int **copyArray, int size);
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size);
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
 int specialCase(int **myArray, **copyArray, int *rowTotal, int *colTotal, int size);
@@ -37,7 +37,7 @@ int main()
     
     /* fill arrays */
     fillArray(myArray, rowTotal, colTotal, size);
-    fillCopy(copyArray, size);
+    //fillCopy(copyArray, size);
     
     /* print arrays */
     printUnsolvedArray(myArray, rowTotal, colTotal, size);
@@ -144,7 +144,7 @@ void createCopy(int **myArray, int **copyArray, size)
     }
 }
 
-/* fill copy */
+/* fill copy 
 void fillCopy(int **copyArray, int size)
 {
     int i, j;
@@ -155,7 +155,7 @@ void fillCopy(int **copyArray, int size)
             copyArray[i][j] = 0;
         }
     }
-}
+}*/
 
 /* print unsloved array data */
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size)
