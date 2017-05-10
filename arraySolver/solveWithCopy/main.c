@@ -1,23 +1,58 @@
+/* A puzzle grid is an N-by-N grid in which every number in the 
+ * grid must be a single digit number. Therefore, only numbers 
+ * in the range from 0 to 9 are allowed. Duplicate numbers are 
+ * allowed. At the end of each row and column there is a number 
+ * representing the sum of that row or column. For example, in 
+ * the figure below the first row has a sum of 6 (= 5 + 0 + 1) 
+ * and the third column has a sum of 9 (= 1 + 6 + 2).
+ * 
+ * Write a puzzle solver program that will solve these types of 
+ * puzzles. Your program will need to read grid data from a provided 
+ * file and solve the puzzle based on the file’s input data.
+ * 
+ * My solution algorithm is as follows:
+ * 
+ * while not solved
+ *      check rows
+ *      if row has one empty space 
+ *          solve
+ *      check column
+ *      if column has one epty space 
+ *          solve
+ * if above algorithm does not solve the puzzle
+ *      send to specialCase()
+ *          create array copy
+ *          find -1 in copy
+ *          guess a value and put in copy
+ *          send copy to solveArray()
+ *          if copy solves
+ *              send copy to checkTotals()
+ *              if checkTotals() returns true
+ *                  puzzle is solved
+ * 
+ * 
+ * Dhruva O'Shea 10/05/17
+ * 
+ * 
+ */ 
 #include <stdio.h>
 #include <stdlib.h>
 
 /*PROTOTYPES */
-int getSize();
-void fillArray(int **array, int *rowTotal, int *colTotal, int count);
-void createCopy(int **myArray, int **copyArray, int size);
-//void fillCopy(int **copyArray, int size);
-void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size);
-int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals retunrs 1 if true
-int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
-int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size);
-void printSolvedArray(int **array, int size);
+int getSize(); // gets array size from file
+void fillArray(int **array, int *rowTotal, int *colTotal, int count); // fills array from file
+void createCopy(int **myArray, int **copyArray, int size); // creates array copy for specialCase()
+void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size); //prints unsolved array
+int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals, returns 1 if true
+int solveArray(int **myArray, int *rowTotal, int *colTotal, int size); // solves array simple algorithm
+int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size); // solves puzzle extended algorithm
+void printSolvedArray(int **array, int size); // prints solved array
 
 /* main starts here */
 int main()
 {
     int i, size = 0;
-
-    size = getSize();
+    size = getSize(); // get size from file
 
     /* creating memory for array, row totals and column totals */
     int **myArray = (int **)malloc(size*sizeof(int *));
@@ -29,6 +64,7 @@ int main()
     rowTotal = (int *)malloc(size*sizeof(int));
     int *colTotal = (int *)malloc(size*sizeof(int));
     colTotal = (int *)malloc(size*sizeof(int));
+    
     /* creat memory for a copy of array incase the going gets tuff */
     int **copyArray = (int **)malloc(size*sizeof(int *));
     for(i=0; i<size; i++)
@@ -38,26 +74,35 @@ int main()
     
     /* fill arrays */
     fillArray(myArray, rowTotal, colTotal, size);
-    //fillCopy(copyArray, size);
     
     /* print arrays */
     printUnsolvedArray(myArray, rowTotal, colTotal, size);
     
-    /* solve array */
-    /* first algorithm starts here */
-    /* while not solved
+    
+    /* Array solver algorithm starts here as discribed below
+     * while not solved
      *      solved = solveArray
-     *      if solved = 1 array is solved
-     *      else if solved = 2 special case algorithm
+     *      if solved = 1 
+     *          array is solved
+     *      else if solved = 2 
+     *          special case algorithm
+     *              create array copy
+     *              find -1 in copy
+     *              guess a value and put in copy
+     *              send copy to solveArray()
+     *               if copy solves
+     *                   send copy to checkTotals()
+     *               if checkTotals() returns true
+     *                   puzzle is solved
     */
     int solved = 0;
     while(solved != 1)
     {
-        solved = solveArray(myArray, rowTotal, colTotal, size);
+        solved = solveArray(myArray, rowTotal, colTotal, size); // simple solution
         if(solved == 2)
         {
             /* special case algorithm here */
-            solved = specialCase(myArray, copyArray, rowTotal, colTotal, size);
+            solved = specialCase(myArray, copyArray, rowTotal, colTotal, size); // special case
         }
     }
     
@@ -79,19 +124,20 @@ int main()
 int getSize()
 {
     FILE * pointer;
-    int count;
-
-    pointer = fopen("../test25.txt", "r");
-
+    int size;
+    
+    pointer = fopen("../test25.txt", "r"); // file reads here. 
+                                           // Change according to your data, name and location
+    
     if(pointer == NULL)
     {
         printf("Open operation failed.");
         return 1;
     }
 
-    fscanf(pointer, "%d", &count);
+    fscanf(pointer, "%d", &size);
     fclose(pointer);
-    return count;
+    return size;
 }
 
 /* fill arrays from file */
@@ -100,7 +146,8 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test25.txt", "r");
+    pointer = fopen("../test25.txt", "r"); // file reads here. 
+                                           // Change according to your data, name and location
 
     // skipping size value
     fscanf(pointer, "%d", &x);
@@ -222,11 +269,11 @@ int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size)
      *         if row has one empty space 
      *            solve
      *         check column
-     *         if column has one epty space 
+     *         if column has one empty space 
      *            solve
      * 
-     * Note: if more than one empty space left array will not be solved by this algorithm.
-     * 
+     * Note: if more than one empty space left in more than one array or column 
+     * array will not be solved by this algorithm.
 */
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
 {
@@ -332,12 +379,15 @@ int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, in
 {
     printf("\nYou have reached my special Case function.\n\n");
     printf("Prepare to experiance my awesome extended algorithm.\n\n");
-    /* create a copy of array
+    /* Algorithm
+     * create a copy of array
      * find -1 record position
      * guess and put in copy
      * check if copy solves and totals are correct
-     * if yes put guess in myArray and solve 
-     * else make copy of orginal again and make new guess
+     * if yes 
+     *     put guess in myArray and solve 
+     * else 
+     *     make copy of orginal again and make new guess
      * keep going until its solves.
      */
      
@@ -355,8 +405,8 @@ int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, in
                     {
                         createCopy(myArray, copyArray, size); // create a copy array to check solution
                         copyArray[i][j] = x;   // put a guess in copyArray
-                        check1 = solveArray(copyArray, rowTotal, colTotal, size); //check if copyArray is solved
-                        check2 = checkTotals(copyArray, rowTotal, colTotal, size); // check totals
+                        check1 = solveArray(copyArray, rowTotal, colTotal, size); //check1 if copyArray is solved
+                        check2 = checkTotals(copyArray, rowTotal, colTotal, size); // check2 totals
                         if(check1  == 1 && check2 == 1) // if arrays solves and totals are correct
                         {
                             myArray[i][j] = x;  // put guess into myArray and solve
