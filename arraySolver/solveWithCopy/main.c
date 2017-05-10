@@ -81,7 +81,7 @@ int getSize()
     FILE * pointer;
     int count;
 
-    pointer = fopen("../test16.txt", "r");
+    pointer = fopen("../test25.txt", "r");
 
     if(pointer == NULL)
     {
@@ -100,7 +100,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test16.txt", "r");
+    pointer = fopen("../test25.txt", "r");
 
     // skipping size value
     fscanf(pointer, "%d", &x);
