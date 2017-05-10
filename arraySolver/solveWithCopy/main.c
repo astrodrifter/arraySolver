@@ -4,9 +4,11 @@
 /*PROTOTYPES */
 int getSize();
 void fillArray(int **array, int *rowTotal, int *colTotal, int count);
+void createCopy(int **myArray, int **copyArray, size);
+void fillCopy(int copyArray, int size);
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size);
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size);
-int specialCase(int **myArray, int *rowTotal, int *colTotal, int size);
+int specialCase(int **myArray, **copyArray, int *rowTotal, int *colTotal, int size);
 void printSolvedArray(int **array, int size);
 
 /* main starts here */
@@ -26,10 +28,17 @@ int main()
     rowTotal = (int *)malloc(size*sizeof(int));
     int *colTotal = (int *)malloc(size*sizeof(int));
     colTotal = (int *)malloc(size*sizeof(int));
+    /* creat memory for a copy of array incase the going gets tuff */
+    int **copyArray = (int **)malloc(size*sizeof(int *));
+    for(i=0; i<size; i++)
+    {
+        myArray[i] = (int *)malloc(size*sizeof(int));
+    }
     
     /* fill arrays */
     fillArray(myArray, rowTotal, colTotal, size);
-  
+    fillCopy(copyArray, size);
+    
     /* print arrays */
     printUnsolvedArray(myArray, rowTotal, colTotal, size);
     
@@ -47,7 +56,7 @@ int main()
         if(solved == 2)
         {
             /* special case algorithm here */
-            solved = specialCase(myArray, rowTotal, colTotal, size);
+            solved = specialCase(myArray, copyArray, rowTotal, colTotal, size);
         }
     }
     
@@ -116,6 +125,29 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
         }
     }
     fclose(pointer);
+}
+
+/* creat copy array */
+void createCopy(int **myArray, int **copyArray, size)
+{
+    /* create array copy */
+    printf("you have netered the create copy function\n\n");
+    int i, j;
+    for(i = 0; i < size; i++)
+    {
+        printf("You have entered first for loop\n\n");
+        for(j = 0; j < size; j++)
+        {
+            printf("You have entered second for loop\n\n");
+            copyArray[i][j] = myArray[i][j];
+        }
+    }
+}
+
+/* fill copy */
+void fillCopy(int copyArray, int size)
+{
+    
 }
 
 /* print unsloved array data */
@@ -260,7 +292,7 @@ int solveArray(int **myArray, int *rowTotal, int *colTotal, int size)
 }
 
 /* special case algorithm */
-int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
+int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size)
 {
     printf("\nYou have reached specialCase() function.\n\n");
     printf("Prepare to experiance my awesome algorithm.\n\n");
@@ -272,35 +304,38 @@ int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
      * else make copy of orginal again and make new guess
      * keep going until its solves.
      */
-    
-    /* create array copy */
-    /*int k, l, copyArray[size][size];
-    for(k = 0; k < size; k++)
-    {
-        for(l = 0; l < size; l++)
-        {
-            copyArray[k][l] = myArray[k][l];
-        }
-    }*/
-    
-    int i, j, x, solved = 0;
+     
+    int i, j, x, solved = 0, check1 = 0;
     /* rows */
-    while(solved != 1)
+    while(solved != 1 && check1 != 1)
     {
+        printf("You made it into while loop\n\n");
         for(i = 0; i < size; i ++)
         {
+            printf("You made it into first for loop\n\n");
             for(j = 0; j < size; j++)
             {
+                printf("You made it into second for loop\n\n");
                 if(myArray[i][j] == -1)
+                {
+                    printf("You found the first -1\n\n");
                     for(x = 0; x < 10; x++)
                     {
-                        myArray[i][j] = x;
-                        solved = solveArray(myArray, rowTotal, colTotal, size);
-                        if(solved  == 1)
+                        printf("You have entered the for x loop\n\n");
+                        createCopy(myArray, copyArray, size); // create a copy array to check slution
+                        printf("Copy array check:\n");
+                        printSolvedArray(copyArray,size); // check copy
+                        copyArray[i][j] = x;   // put a guess in copyArray
+                        check1 = solveArray(copyArray, rowTotal, colTotal, size); //check if copyArray is solved
+                        // now check if totals are true
+                        if(check1  == 1)
                         {
-                            return 1;
+                            myArray[i][j] = x;
+                            solved = solveArray(myArray, rowTotal, colTotal, size);
+                            return solved;
                         }
                     }
+                }
             }
         }
     }
@@ -309,7 +344,7 @@ int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
         printf("Array solved in special case function.\n\n");
         return solved;
     } 
-    return 1;
+    return solved;
 }
 
 /* print solved array */

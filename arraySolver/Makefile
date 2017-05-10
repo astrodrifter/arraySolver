@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ specialCase - Debug ]----------"
-	@cd "specialCase" && "$(MAKE)" -f  "specialCase.mk"
+	@echo "----------Building project:[ solveWithCopy - Debug ]----------"
+	@cd "solveWithCopy" && "$(MAKE)" -f  "solveWithCopy.mk"
 clean:
-	@echo "----------Cleaning project:[ specialCase - Debug ]----------"
-	@cd "specialCase" && "$(MAKE)" -f  "specialCase.mk" clean
+	@echo "----------Cleaning project:[ solveWithCopy - Debug ]----------"
+	@cd "solveWithCopy" && "$(MAKE)" -f  "solveWithCopy.mk" clean
