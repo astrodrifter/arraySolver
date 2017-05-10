@@ -52,6 +52,7 @@ int main()
     }
     
     /* print solution */
+    printf("Solved array:\n");
     printSolvedArray(myArray, size);
     
     // deleting memory
@@ -70,7 +71,7 @@ int getSize()
     FILE * pointer;
     int count;
 
-    pointer = fopen("../test11.txt", "r");
+    pointer = fopen("../test24.txt", "r");
 
     if(pointer == NULL)
     {
@@ -89,7 +90,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test11.txt", "r");
+    pointer = fopen("../test24.txt", "r");
 
     // skipping size value
     fscanf(pointer, "%d", &x);
@@ -279,6 +280,10 @@ int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
                     {
                         myArray[i][j] = x;
                         solved = solveArray(myArray, rowTotal, colTotal, size);
+                        if(solved  == 1)
+                        {
+                            return 1;
+                        }
                     }
             }
         }
@@ -295,7 +300,7 @@ int specialCase(int **myArray, int *rowTotal, int *colTotal, int size)
 void printSolvedArray(int **array, int size)
 {
     int x, y;
-    printf("Solved array\n");
+    //printf("Solved array\n");
     for(x = 0; x < size; x++)
     {
         for(y = 0; y < size; y++)
