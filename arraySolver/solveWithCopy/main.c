@@ -40,12 +40,12 @@
 
 /*PROTOTYPES */
 int getSize(); // gets array size from file
-void fillArray(int **array, int *rowTotal, int *colTotal, int count); // fills array from file
-void createCopy(int **myArray, int **copyArray, int size); // creates array copy for specialCase()
+void fillArray(int **array, int *rowTotal, int *colTotal, int size); // fills array from file
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size); //prints unsolved array
-int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals, returns 1 if true
 int solveArray(int **myArray, int *rowTotal, int *colTotal, int size); // solves arrays with simple algorithm
 int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size); // solves more difficult puzzle with extended algorithm
+void createCopy(int **myArray, int **copyArray, int size); // creates array copy for specialCase()
+int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals, returns 1 if true
 void printSolvedArray(int **array, int size); // prints solved array
 
 /* main starts here */
@@ -53,6 +53,11 @@ int main()
 {
     int i, size = 0;
     size = getSize(); // get size from file
+    if(size < 2 || size > 10)
+    {
+        printf("Incorrect size value!\n");
+        return 0;
+    }
 
     /* creating memory for array, row totals and column totals */
     int **myArray = (int **)malloc(size*sizeof(int *));
@@ -127,7 +132,7 @@ int getSize()
     FILE * pointer;
     int size;
     
-    pointer = fopen("../test26.txt", "r"); // file reads here. 
+    pointer = fopen("../test28.txt", "r"); // file reads here. 
                                            // Change according to your data, name and location
     
     if(pointer == NULL)
@@ -137,39 +142,45 @@ int getSize()
     }
 
     fscanf(pointer, "%d", &size);
+    
     fclose(pointer);
     return size;
 }
 
 /* fill arrays from file */
-void fillArray(int **array, int *rowTotal, int *colTotal, int count)
+void fillArray(int **array, int *rowTotal, int *colTotal, int size)
 {
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test26.txt", "r"); // file reads here. 
+    pointer = fopen("../test28.txt", "r"); // file reads here. 
                                            // Change according to your data, name and location
 
     // skipping size value
     fscanf(pointer, "%d", &x);
   
-    for(i = 0; i < count + 2; i++)
+    for(i = 0; i < size + 2; i++)
     {
-        if( i == count)
+        if( i == size)
         {
-            for(j = 0; j < count; j++)
+            for(j = 0; j < size; j++)
             {
                 fscanf(pointer, "%d",&rowTotal[j]);
             }
-        } else if (i == count + 1) {
-            for(j = 0; j < count; j++)
+        } else if (i == size + 1) {
+            for(j = 0; j < size; j++)
             {
                 fscanf(pointer, "%d",&colTotal[j]);
             }
         } else {
-            for(j = 0; j < count; j++)
+            for(j = 0; j < size; j++)
             {
                 fscanf(pointer, "%d",&array[i][j]);
+                if(array[i][j] < -1 || array[i][j] > 9)
+                {
+                    printf("Incorrect array value!\n");
+                    exit(1);
+                }
             }
         }
     }
@@ -392,7 +403,7 @@ int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, in
      * keep going until its solves.
      */
      
-    int i, j, x, solved = 0, check1 = 0, check2 = 0;
+    int i, j, x, solved = 0, check1 = 0, check2 = 0, count = 0;
     /* rows */
     while(solved != 1 && check1 != 1 && check2 != 1)
     {
@@ -417,6 +428,12 @@ int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, in
                     }
                 }
             }
+        }
+        count++;
+        if(count > 50)
+        {
+            printf("\n\nSorry. This program cannot solve your puzzle.\n\n");
+            exit(1);
         }
     }
     if(solved == 1)
