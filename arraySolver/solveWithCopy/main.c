@@ -44,8 +44,8 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count); // fills a
 void createCopy(int **myArray, int **copyArray, int size); // creates array copy for specialCase()
 void printUnsolvedArray(int **array, int *rowTotal, int *colTotal, int size); //prints unsolved array
 int checkTotals(int **copyArray, int *rowTotal, int *colTotal, int size); // checks totals, returns 1 if true
-int solveArray(int **myArray, int *rowTotal, int *colTotal, int size); // solves array simple algorithm
-int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size); // solves puzzle extended algorithm
+int solveArray(int **myArray, int *rowTotal, int *colTotal, int size); // solves arrays with simple algorithm
+int specialCase(int **myArray, int **copyArray, int *rowTotal, int *colTotal, int size); // solves more difficult puzzle with extended algorithm
 void printSolvedArray(int **array, int size); // prints solved array
 
 /* main starts here */
@@ -111,14 +111,15 @@ int main()
     printSolvedArray(myArray, size);
     
     // deleting memory
-    for(i=0; i<size; i++)
+    for(i = 0; i < size; i++)
     {
         free(myArray[i]);
     }
     free(myArray);
     free(rowTotal);
     free(colTotal);
-}
+    
+} /* end of main */
 
 /* Get aray size from file */
 int getSize()
@@ -126,7 +127,7 @@ int getSize()
     FILE * pointer;
     int size;
     
-    pointer = fopen("../test25.txt", "r"); // file reads here. 
+    pointer = fopen("../test26.txt", "r"); // file reads here. 
                                            // Change according to your data, name and location
     
     if(pointer == NULL)
@@ -146,7 +147,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int count)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test25.txt", "r"); // file reads here. 
+    pointer = fopen("../test26.txt", "r"); // file reads here. 
                                            // Change according to your data, name and location
 
     // skipping size value
