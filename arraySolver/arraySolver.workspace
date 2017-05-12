@@ -16,7 +16,8 @@
   <Project Name="fillArrayChegg" Path="fillArrayChegg/fillArrayChegg.project" Active="No"/>
   <Project Name="theGreatJoin" Path="theGreatJoin/theGreatJoin.project" Active="No"/>
   <Project Name="specialCase" Path="specialCase/specialCase.project" Active="No"/>
-  <Project Name="solveWithCopy" Path="solveWithCopy/solveWithCopy.project" Active="Yes"/>
+  <Project Name="solveWithCopy" Path="solveWithCopy/solveWithCopy.project" Active="No"/>
+  <Project Name="submission" Path="submission/submission.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -37,6 +38,7 @@
       <Project Name="theGreatJoin" ConfigName="Debug"/>
       <Project Name="specialCase" ConfigName="Debug"/>
       <Project Name="solveWithCopy" ConfigName="Debug"/>
+      <Project Name="submission" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -57,6 +59,7 @@
       <Project Name="theGreatJoin" ConfigName="Release"/>
       <Project Name="specialCase" ConfigName="Release"/>
       <Project Name="solveWithCopy" ConfigName="Release"/>
+      <Project Name="submission" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
