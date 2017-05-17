@@ -141,7 +141,7 @@ int getSize()
     FILE * pointer;
     int size;
     
-    pointer = fopen("../test27.txt", "r"); // file reads here. 
+    pointer = fopen("../test15.txt", "r"); // file reads here. 
                                            // Change according to your data, name and location
     
     if(pointer == NULL)
@@ -162,7 +162,7 @@ void fillArray(int **array, int *rowTotal, int *colTotal, int size)
     FILE * pointer;
     int i, j, x;
 
-    pointer = fopen("../test27.txt", "r"); // file reads here. 
+    pointer = fopen("../test15.txt", "r"); // file reads here. 
                                            // Change according to your data, name and location
 
     // skipping size value
